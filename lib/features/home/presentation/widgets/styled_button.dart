@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/style/app_size.dart';
 import 'package:portfolio/core/style/app_colors.dart';
+import 'package:portfolio/core/extension/extensions.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String title;
@@ -38,7 +39,9 @@ class PrimaryButton extends StatelessWidget {
       onPressed: onPressed ?? () {},
       child: Text(
         title,
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        style: context.textStyles.bodyLgMedium.copyWith(
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
@@ -79,7 +82,9 @@ class SecondaryButton extends StatelessWidget {
       onPressed: onPressed ?? () {},
       child: Text(
         title,
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        style: context.textStyles.bodyLgMedium.copyWith(
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

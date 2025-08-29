@@ -49,7 +49,9 @@ class _MyAppState extends State<MyApp> {
             },
             debugShowCheckedModeBanner: false,
             darkTheme: AppTheme().darkTheme,
-            themeMode: context.watch<ThemeCubit>().state ? ThemeMode.dark : ThemeMode.light,
+            themeMode: context.watch<ThemeCubit>().state
+                ? ThemeMode.dark
+                : ThemeMode.light,
             home: HomePage(),
           );
         },

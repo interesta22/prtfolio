@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:portfolio/core/style/app_text_styles.dart';
 import 'package:portfolio/core/constants/app_menu_list.dart';
 import 'package:portfolio/features/home/presentation/cubit/theme_cubit.dart';
 import 'package:portfolio/features/home/presentation/cubit/locale_cubit.dart';
+import 'package:portfolio/features/home/presentation/widgets/blur_background.dart';
 import 'package:portfolio/features/home/presentation/widgets/app_bar_drawer_icon.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -22,28 +24,46 @@ class CustomAppBar extends StatefulWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      alignment: Alignment.center,
-      height: context.insets.appBarHeight,
-      padding: EdgeInsets.symmetric(
-        horizontal: context.insets.padding,
-        vertical: Insets.xs,
-      ),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: Insets.maxWidth),
-        child: Row(
-          children: [
-            AppLogo(),
-            if (context.isDesktop) Expanded(child: LargeMenu()) else Spacer(),
-            LanguageToggle(
-              onLangSelected: (lang) {
-                context.read<LocaleCubit>().changeLanguage(lang);
-              },
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8), // ✅ يخلي الزوايا ناعمة
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10), // ✅ Blur effect
+        child: Container(
+          height: context.insets.appBarHeight,
+          decoration: BoxDecoration(
+            color: context.colorScheme.primary.withOpacity(0.02), // لون شفاف
+            boxShadow: [
+              BoxShadow(
+                color: context.colorScheme.primary.withOpacity(0.02),
+                blurRadius: 30,
+                offset: const Offset(0, 10),
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: Insets.maxWidth),
+              child: Row(
+                children: [
+                  AppLogo(),
+                  if (context.isDesktop)
+                    Expanded(child: LargeMenu())
+                  else
+                    Spacer(),
+                  LanguageToggle(
+                    onLangSelected: (lang) {
+                      context.read<LocaleCubit>().changeLanguage(lang);
+                    },
+                  ),
+                  ThemeToggle(),
+                  if (context.isMobile || context.isTablet) ...[
+                    AppBarDrawerIcon(),
+                  ],
+                ],
+              ),
             ),
-            ThemeToggle(),
-            if (context.isMobile || context.isTablet) ...[AppBarDrawerIcon()],
-          ],
+          ),
         ),
       ),
     );

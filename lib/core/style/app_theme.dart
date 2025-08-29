@@ -8,32 +8,34 @@ class AppTheme {
     colorScheme: ColorScheme.dark(
       primary: AppColors.primaryColor,
       background: AppColors.darkBackgroundColor,
-      surface: AppColors.gray[800]!,
-      outline: AppColors.gray[800]!,
-      outlineVariant: AppColors.gray[700]!,
-      onBackground: AppColors.gray[100],
-      onSurface: AppColors.gray[300]!,
+      surface: AppColors.gray[850]!, // أغمق سنة من 800
+      outline: AppColors.gray[700]!,
+      outlineVariant: AppColors.gray[600]!,
+      onBackground: AppColors.gray[100], // النص الفاتح
+      onSurface: AppColors.gray[300]!, // النص الثانوي
       onSurfaceVariant: AppColors.gray[400]!,
       tertiary: AppColors.gray[900]!,
     ),
-    appBarTheme: AppBarTheme(color: AppColors.darkBackgroundColor),
+    appBarTheme: AppBarTheme(
+      color: AppColors.darkBackgroundColor,
+      elevation: 0,
+    ),
   );
 
   ThemeData get lightTheme => _getThemeData(
     colorScheme: ColorScheme.light(
       primary: AppColors.primaryColor,
-      background: AppColors.gray[100]!,
-      surface: AppColors.gray[200]!,
+      background: AppColors.gray[50]!, // أفتح
+      surface: AppColors.gray[100]!, // card خفيفة
       outline: AppColors.gray[300]!,
       outlineVariant: AppColors.gray[400]!,
-      onBackground: AppColors.gray[800],
-      onSurface: AppColors.gray[700]!,
+      onBackground: AppColors.gray[900], // النص الأساسي
+      onSurface: AppColors.gray[700]!, // النص الثانوي
       onSurfaceVariant: AppColors.gray[600]!,
-      tertiary: AppColors.gray[900]!,
+      tertiary: AppColors.gray[800]!,
     ),
-    appBarTheme: AppBarTheme(color: AppColors.gray[100]),
-
-    scaffoldBackgroundColor: AppColors.gray[100]!,
+    appBarTheme: AppBarTheme(color: AppColors.gray[50], elevation: 0),
+    scaffoldBackgroundColor: AppColors.gray[50]!,
   );
 
   ThemeData _getThemeData({
@@ -47,92 +49,21 @@ class AppTheme {
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       appBarTheme: appBarTheme,
 
-      // ✅ زرار السويتش (مظبوط للدارك واللايت)
+      // ✅ زرار السويتش
       switchTheme: SwitchThemeData(
         thumbColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return colorScheme.primary; // لون الدائرة لما يكون on
+            return colorScheme.primary;
           }
-          return colorScheme.inverseSurface; // لون الدائرة لما يكون off
+          return colorScheme.inverseSurface;
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return colorScheme.primary.withOpacity(
-              0.5,
-            ); // لون المسار لما يكون on
+            return colorScheme.primary.withOpacity(0.5);
           }
-          return colorScheme.surfaceVariant; // لون المسار لما يكون off
+          return colorScheme.surfaceVariant;
         }),
       ),
-
-      //   (elevatedButtonTheme: ElevatedButtonThemeData(
-      //     style: ButtonStyle(
-      //       fixedSize: WidgetStateProperty.all(Size.fromHeight(48)),
-      //       padding: WidgetStateProperty.all(
-      //         EdgeInsets.symmetric(vertical: 10, horizontal: Insets.xl),
-      //       ),
-      //       textStyle: WidgetStatePropertyAll(
-      //         const TextStyle(fontWeight: FontWeight.w500),
-      //       ),
-      //       foregroundColor: WidgetStatePropertyAll(
-      //         AppColors.gray[100],
-      //       ), // ✅ لون التكست
-      //       backgroundColor: WidgetStatePropertyAll(
-      //         AppColors.primaryColor,
-      //       ), // ✅ لون الباك
-      //     ),
-      //   ),
-      //   outlinedButtonTheme: OutlinedButtonThemeData(
-      //     style: ButtonStyle(
-      //       fixedSize: WidgetStateProperty.all(Size.fromHeight(48)),
-      //       padding: WidgetStateProperty.all(
-      //         EdgeInsets.symmetric(vertical: 10, horizontal: Insets.xl),
-      //       ),
-      //       textStyle: WidgetStatePropertyAll(
-      //         const TextStyle(fontWeight: FontWeight.w500),
-      //       ),
-      //       foregroundColor: WidgetStatePropertyAll(
-      //         AppColors.gray[800],
-      //       ), // ✅ لون التكست
-      //     ),
-      //   ),
-      // );)
     );
   }
-
-  // final _primaryButtonStates = WidgetStateProperty.resolveWith((states) {
-  //   if (states.contains(WidgetState.hovered) ||
-  //       states.contains(WidgetState.pressed)) {
-  //     return BorderSide(color: Color(0xff561895).withOpacity(0.7));
-  //   }
-  //   return const BorderSide(color: AppColors.primaryColor);
-  // });
-
-  // final _outlineButtonStates = WidgetStateProperty.resolveWith((states) {
-  //   if (states.contains(WidgetState.hovered) ||
-  //       states.contains(WidgetState.pressed)) {
-  //     return BorderSide(color: const Color(0xff561895).withOpacity(0.7));
-  //   }
-  //   return const BorderSide(color: Color(0xff561895));
-  // });
-
-  // WidgetStatePropertyAll<TextStyle> get _lightElevatedButtonTextStyle =>
-  //     WidgetStatePropertyAll(
-  //       TextStyle(color: AppColors.gray[100], fontWeight: FontWeight.w500),
-  //     ); // TextStyle // WidgetStatePropertyAll
-  // // TextStyle // WidgetStatePropertyAll
-  // WidgetStatePropertyAll<TextStyle> get _darkOutlinedButtonTextStyle =>
-  //     WidgetStatePropertyAll(
-  //       TextStyle(color: AppColors.gray[100], fontWeight: FontWeight.w500),
-  //     );
-
-  // WidgetStatePropertyAll<TextStyle> get _darkElevatedButtonTextStyle =>
-  //     WidgetStatePropertyAll(
-  //       TextStyle(color: AppColors.gray[100], fontWeight: FontWeight.w500),
-  //     );
-
-  // WidgetStatePropertyAll<TextStyle> get _lightOutlinedButtonTextStyle =>
-  //     WidgetStatePropertyAll(
-  //       TextStyle(color: AppColors.gray[800], fontWeight: FontWeight.w500),
-  //     );
 }

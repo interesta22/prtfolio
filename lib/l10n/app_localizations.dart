@@ -185,8 +185,20 @@ abstract class AppLocalizations {
   /// No description provided for @aboutParagraph.
   ///
   /// In en, this message translates to:
-  /// **'Hi, I’m Ahmed Abdul Aziz, a Flutter & Mobile App Developer from Egypt. My journey into tech started with my Computer Science studies at Kafr El-Sheikh University, after transferring from Luxor University.\n\nOver the past years, I’ve gained hands-on experience through training with the Digital Egypt Pioneers Initiative (DEPI) and the Information Technology Institute (ITI), where I built real-world mobile apps using Flutter, Dart, Firebase, and REST APIs. I also worked with state management patterns like Cubit and Bloc, and focused on delivering clean, scalable, and maintainable code.\n\nBeyond coding, I value teamwork, communication, and problem-solving skills I strengthened while collaborating on projects and mentoring peers.\n\nWhat sets me apart? I don’t just build apps, I build experiences.'**
+  /// **'My journey into tech started with my Computer Science studies at Kafr El-Sheikh University, after transferring from Luxor University.Over the past years, I’ve gained hands-on experience through training with the Digital Egypt Pioneers Initiative (DEPI) and the Information Technology Institute (ITI), where I built real-world mobile apps using Flutter, Dart, Firebase, and REST APIs. I also worked with state management patterns like Cubit and Bloc, and focused on delivering clean, scalable, and maintainable code.Beyond coding, I value teamwork, communication, and problem-solving skills I strengthened while collaborating on projects and mentoring peers.What sets me apart? I don’t just build apps, I build experiences.'**
   String get aboutParagraph;
+
+  /// No description provided for @softSkills.
+  ///
+  /// In en, this message translates to:
+  /// **'Soft Skills'**
+  String get softSkills;
+
+  /// No description provided for @technicalSkills.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical Skills'**
+  String get technicalSkills;
 
   /// No description provided for @teamwork.
   ///

@@ -31,6 +31,7 @@ dependencies:
   bloc: ^9.0.0
   card_swiper: ^3.0.1
   cupertino_icons: ^1.0.8
+  dotted_line: ^3.2.3
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
@@ -82,7 +83,6 @@ flutter:
           weight: 700
         - asset: assets/fonts/NotoSansArabic-ExtraBold.ttf
           weight: 800
-
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
