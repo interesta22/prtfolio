@@ -18,7 +18,7 @@ class BackgroundBlur extends StatelessWidget {
             BoxShadow(
               blurRadius: 200,
               spreadRadius: 100,
-              color: context.colorScheme.primary.withOpacity(0.4),
+              color: context.colorScheme.primary.withOpacity(0.5),
             ),
           ], // BoxShadow
         ), // BoxDecoration

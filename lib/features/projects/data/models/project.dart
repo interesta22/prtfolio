@@ -7,7 +7,6 @@ class Project {
   final List<String> galleryImages; // صور إضافية
   final String? liveDemoLink;
   final String? downloadLink;
-  final String? githubLink;
 
   Project({
     required this.name,
@@ -18,6 +17,5 @@ class Project {
     required this.galleryImages,
     this.liveDemoLink,
     this.downloadLink,
-    this.githubLink,
   });
 }

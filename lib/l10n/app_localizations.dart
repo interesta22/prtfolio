@@ -499,6 +499,240 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Using MVVM pattern to separate UI and logic'**
   String get mvvmsubtitle;
+
+  /// No description provided for @deadbot_short.
+  ///
+  /// In en, this message translates to:
+  /// **'AI app that answers your questions and solves problems, with free image uploads.'**
+  String get deadbot_short;
+
+  /// No description provided for @deadbot_long.
+  ///
+  /// In en, this message translates to:
+  /// **'An advanced AI app using large language models (LLM) to provide accurate answers to your questions and solutions to your problems. The app features an easy-to-use interface, free image upload support, and cloud integration to ensure high performance and reliability.'**
+  String get deadbot_long;
+
+  /// No description provided for @k3_short.
+  ///
+  /// In en, this message translates to:
+  /// **'App to calculate transport fares and split expenses accurately.'**
+  String get k3_short;
+
+  /// No description provided for @k3_long.
+  ///
+  /// In en, this message translates to:
+  /// **'Khalyha Alena helps you calculate public transport fares among friends, records who paid what, and computes who owes or is owed money. It also provides efficient travel routes to organize daily expenses or group trips effectively.'**
+  String get k3_long;
+
+  /// No description provided for @tawseela_short.
+  ///
+  /// In en, this message translates to:
+  /// **'Transport service for students living away, at affordable and comfortable prices.'**
+  String get tawseela_short;
+
+  /// No description provided for @tawseela_long.
+  ///
+  /// In en, this message translates to:
+  /// **'Tawseela is an app designed to ease life for students living away from home in Egypt. It provides safe and comfortable transport between cities and governorates at reasonable prices, with the ability to track vehicles and book trips easily.'**
+  String get tawseela_long;
+
+  /// No description provided for @memomate_short.
+  ///
+  /// In en, this message translates to:
+  /// **'App for safely and efficiently recording personal notes online.'**
+  String get memomate_short;
+
+  /// No description provided for @memomate_long.
+  ///
+  /// In en, this message translates to:
+  /// **'Memomate is an app for recording personal notes online in a secure and organized way. You can write daily journals, record ideas, and keep important notes accessible anytime from any device.'**
+  String get memomate_long;
+
+  /// No description provided for @aboot__.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m Ahmed Abdul Aziz and '**
+  String get aboot__;
+
+  /// No description provided for @aboot___.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Developer'**
+  String get aboot___;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @luxor_university.
+  ///
+  /// In en, this message translates to:
+  /// **'Luxor University'**
+  String get luxor_university;
+
+  /// No description provided for @faculty_computers_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Faculty of Computers and Information'**
+  String get faculty_computers_info;
+
+  /// No description provided for @date_oct2022_jun2023.
+  ///
+  /// In en, this message translates to:
+  /// **'Oct 2022 - Jun 2023'**
+  String get date_oct2022_jun2023;
+
+  /// No description provided for @kfs_university.
+  ///
+  /// In en, this message translates to:
+  /// **'Kafr El-Sheikh University'**
+  String get kfs_university;
+
+  /// No description provided for @cs_department.
+  ///
+  /// In en, this message translates to:
+  /// **'CS Department'**
+  String get cs_department;
+
+  /// No description provided for @date_oct2023_present.
+  ///
+  /// In en, this message translates to:
+  /// **'Oct 2023 - Present'**
+  String get date_oct2023_present;
+
+  /// No description provided for @iti.
+  ///
+  /// In en, this message translates to:
+  /// **'Information Technology Institute'**
+  String get iti;
+
+  /// No description provided for @summer_training_flutter.
+  ///
+  /// In en, this message translates to:
+  /// **'Summer Training - Flutter Track'**
+  String get summer_training_flutter;
+
+  /// No description provided for @tanta_branch.
+  ///
+  /// In en, this message translates to:
+  /// **'Tanta Branch'**
+  String get tanta_branch;
+
+  /// No description provided for @date_jul2025_aug2025.
+  ///
+  /// In en, this message translates to:
+  /// **'Jul 2025 - Aug 2025'**
+  String get date_jul2025_aug2025;
+
+  /// No description provided for @depi.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital Egypt Pioneers Initiative'**
+  String get depi;
+
+  /// No description provided for @flutter_track.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Track'**
+  String get flutter_track;
+
+  /// No description provided for @alexandria.
+  ///
+  /// In en, this message translates to:
+  /// **'Alexandria'**
+  String get alexandria;
+
+  /// No description provided for @date_jul2025_present.
+  ///
+  /// In en, this message translates to:
+  /// **'Jul 2025 - Present'**
+  String get date_jul2025_present;
+
+  /// No description provided for @view_my_cv.
+  ///
+  /// In en, this message translates to:
+  /// **'View My CV'**
+  String get view_my_cv;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @subject.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get subject;
+
+  /// No description provided for @message.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get message;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @enterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get enterName;
+
+  /// No description provided for @enterEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get enterEmail;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email address'**
+  String get invalidEmail;
+
+  /// No description provided for @enterSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter subject'**
+  String get enterSubject;
+
+  /// No description provided for @enterMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your message'**
+  String get enterMessage;
+
+  /// No description provided for @messageSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Your message has been sent successfully'**
+  String get messageSent;
+
+  /// No description provided for @messageFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to send message'**
+  String get messageFailed;
+
+  /// No description provided for @view.
+  ///
+  /// In en, this message translates to:
+  /// **'view'**
+  String get view;
 }
 
 class _AppLocalizationsDelegate

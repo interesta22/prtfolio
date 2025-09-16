@@ -4,6 +4,8 @@ import 'package:portfolio/core/style/app_theme.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:portfolio/features/home/presentation/home_page.dart';
+import 'package:portfolio/features/about/data/repos/contact_repo.dart';
+import 'package:portfolio/features/about/presentation/cubit/contact.dart';
 import 'package:portfolio/features/home/presentation/cubit/theme_cubit.dart';
 import 'package:portfolio/features/home/presentation/cubit/locale_cubit.dart';
 
@@ -25,6 +27,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider(create: (context) => LocaleCubit()),
         BlocProvider(create: (context) => ThemeCubit()),
+        BlocProvider(create: (context) => ContactCubit(ContactRepository())),
       ],
       child: BlocBuilder<LocaleCubit, LocaleState>(
         builder: (context, state) {

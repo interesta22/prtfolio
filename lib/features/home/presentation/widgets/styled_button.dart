@@ -62,14 +62,14 @@ class SecondaryButton extends StatelessWidget {
               states.contains(WidgetState.pressed)) {
             return const BorderSide(color: AppColors.primaryColor, width: 2);
           }
-          return BorderSide(color: AppColors.gray[400]!, width: 1.5);
+          return BorderSide(color: context.colorScheme.onSurface, width: 1.5);
         }),
         foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.hovered) ||
               states.contains(WidgetState.pressed)) {
             return AppColors.primaryColor;
           }
-          return AppColors.gray[400]!;
+          return context.colorScheme.onSurface;
         }),
         fixedSize: WidgetStateProperty.all(Size.fromHeight(48)),
         padding: WidgetStateProperty.all(

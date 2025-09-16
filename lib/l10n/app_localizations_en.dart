@@ -230,4 +230,129 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mvvmsubtitle => 'Using MVVM pattern to separate UI and logic';
+
+  @override
+  String get deadbot_short =>
+      'AI app that answers your questions and solves problems, with free image uploads.';
+
+  @override
+  String get deadbot_long =>
+      'An advanced AI app using large language models (LLM) to provide accurate answers to your questions and solutions to your problems. The app features an easy-to-use interface, free image upload support, and cloud integration to ensure high performance and reliability.';
+
+  @override
+  String get k3_short =>
+      'App to calculate transport fares and split expenses accurately.';
+
+  @override
+  String get k3_long =>
+      'Khalyha Alena helps you calculate public transport fares among friends, records who paid what, and computes who owes or is owed money. It also provides efficient travel routes to organize daily expenses or group trips effectively.';
+
+  @override
+  String get tawseela_short =>
+      'Transport service for students living away, at affordable and comfortable prices.';
+
+  @override
+  String get tawseela_long =>
+      'Tawseela is an app designed to ease life for students living away from home in Egypt. It provides safe and comfortable transport between cities and governorates at reasonable prices, with the ability to track vehicles and book trips easily.';
+
+  @override
+  String get memomate_short =>
+      'App for safely and efficiently recording personal notes online.';
+
+  @override
+  String get memomate_long =>
+      'Memomate is an app for recording personal notes online in a secure and organized way. You can write daily journals, record ideas, and keep important notes accessible anytime from any device.';
+
+  @override
+  String get aboot__ => 'I\'m Ahmed Abdul Aziz and ';
+
+  @override
+  String get aboot___ => 'Flutter Developer';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get luxor_university => 'Luxor University';
+
+  @override
+  String get faculty_computers_info => 'Faculty of Computers and Information';
+
+  @override
+  String get date_oct2022_jun2023 => 'Oct 2022 - Jun 2023';
+
+  @override
+  String get kfs_university => 'Kafr El-Sheikh University';
+
+  @override
+  String get cs_department => 'CS Department';
+
+  @override
+  String get date_oct2023_present => 'Oct 2023 - Present';
+
+  @override
+  String get iti => 'Information Technology Institute';
+
+  @override
+  String get summer_training_flutter => 'Summer Training - Flutter Track';
+
+  @override
+  String get tanta_branch => 'Tanta Branch';
+
+  @override
+  String get date_jul2025_aug2025 => 'Jul 2025 - Aug 2025';
+
+  @override
+  String get depi => 'Digital Egypt Pioneers Initiative';
+
+  @override
+  String get flutter_track => 'Flutter Track';
+
+  @override
+  String get alexandria => 'Alexandria';
+
+  @override
+  String get date_jul2025_present => 'Jul 2025 - Present';
+
+  @override
+  String get view_my_cv => 'View My CV';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get subject => 'Subject';
+
+  @override
+  String get message => 'Message';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get enterName => 'Enter your name';
+
+  @override
+  String get enterEmail => 'Enter your email';
+
+  @override
+  String get invalidEmail => 'Invalid email address';
+
+  @override
+  String get enterSubject => 'Enter subject';
+
+  @override
+  String get enterMessage => 'Enter your message';
+
+  @override
+  String get messageSent => 'Your message has been sent successfully';
+
+  @override
+  String get messageFailed => 'Failed to send message';
+
+  @override
+  String get view => 'view';
 }

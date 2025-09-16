@@ -14,10 +14,10 @@ abstract class AppInsets {
 
 class LargeAppInsets implements AppInsets {
   @override
-  double get padding => 80.0;
+  double get padding => 90.0;
 
   @override
-  double get appBarHeight => 70.0;
+  double get appBarHeight => 50.0;
 }
 
 class SmallAppInsets implements AppInsets {
@@ -25,5 +25,5 @@ class SmallAppInsets implements AppInsets {
   double get padding => 16.0;
 
   @override
-  double get appBarHeight => 64.0;
+  double get appBarHeight => 30.0;
 }

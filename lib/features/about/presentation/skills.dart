@@ -204,16 +204,15 @@ class SkillsSwiper extends StatelessWidget {
         control: const SwiperControl(color: AppColors.primaryColor),
         indicatorLayout: PageIndicatorLayout.SCALE,
         itemBuilder: (BuildContext context, int index) {
-          final group;
-          if (context.isDesktop) {
-            final start = index * 3;
-            final end = (start + 3).clamp(0, softSkills.length);
-            group = softSkills.sublist(start, end);
-          } else {
-            final start = index * 1;
-            final end = (start + 1).clamp(0, softSkills.length);
-            group = softSkills.sublist(start, end);
-          }
+          final groupCount = context.isDesktop
+              ? 3
+              : context.isTablet
+              ? 2
+              : 1;
+
+          final start = index * groupCount;
+          final end = (start + groupCount).clamp(0, softSkills.length);
+          final group = softSkills.sublist(start, end);
 
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -229,7 +228,14 @@ class SkillsSwiper extends StatelessWidget {
             ],
           );
         },
-        itemCount: (softSkills.length / 3).ceil(),
+        itemCount:
+            (softSkills.length /
+                    (context.isDesktop
+                        ? 3
+                        : context.isTablet
+                        ? 2
+                        : 1))
+                .ceil(),
       ),
     );
   }

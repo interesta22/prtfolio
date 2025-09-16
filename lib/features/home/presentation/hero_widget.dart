@@ -4,6 +4,7 @@ import 'package:portfolio/core/style/app_size.dart';
 import 'package:portfolio/core/extension/extensions.dart';
 import 'package:portfolio/features/home/presentation/hero_texts.dart';
 import 'package:portfolio/features/home/presentation/herp_image.dart';
+import 'package:portfolio/features/home/presentation/widgets/cv.dart';
 import 'package:portfolio/features/home/presentation/hero_buttons.dart';
 
 class HeroWidget extends StatelessWidget {
@@ -24,12 +25,23 @@ class _LargeHeroWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(child: HeroImage()),
+        Expanded(
+          child: SizedBox(height: context.height * 0.7, child: HeroImage()),
+        ),
         Gap(Insets.xxxl),
         Expanded(
           flex: 2,
           child: Column(
-            children: [HeroTexts(), Gap(Insets.xxl), LargeHeroButton()],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeroTexts(),
+              Gap(Insets.xxl),
+              DownloadCVButton(
+                cvUrl:
+                    'https://drive.google.com/file/d/1PqG277to1259scPwA7UsQ5q-iS7a_A79/view?usp=sharing',
+                title: context.loc.view_my_cv,
+              ),
+            ],
           ),
         ),
       ],
@@ -44,11 +56,9 @@ class _SmallHeroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 300, child: HeroImage()),
+        SizedBox(height: context.height * 0.5, child: HeroImage()),
         Gap(Insets.xl),
         HeroTexts(),
-        Gap(Insets.xxl),
-        SmallHeroButton(),
       ],
     );
   }

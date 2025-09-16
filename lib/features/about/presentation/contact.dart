@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/style/app_colors.dart';
-import 'package:portfolio/core/extension/extensions.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/features/about/data/models/message_model.dart';
+import 'package:portfolio/features/about/presentation/cubit/contact.dart';
+import 'package:portfolio/features/home/presentation/widgets/styled_button.dart';
+import 'package:portfolio/core/extension/extensions.dart'; // ✅ مهم عشان context.loc
 
-class Contact extends StatelessWidget {
-  const Contact({super.key});
+class ContactSection extends StatelessWidget {
+  ContactSection({super.key});
 
-  InputDecoration _inputDecoration(String label, BuildContext context) {
+  final _formKey = GlobalKey<FormState>();
+
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _subjectController = TextEditingController();
+  final _messageController = TextEditingController();
+
+  InputDecoration _inputDecoration(String label) {
     return InputDecoration(
-      focusColor: AppColors.primaryColor,
-
       hintText: label,
       filled: true,
-      fillColor: AppColors.primaryColor.withOpacity(0.1),
-      hintStyle: context.textStyles.bodyLgMedium.copyWith(
-        fontWeight: FontWeight.w500,
-      ),
+      fillColor: Colors.deepPurple.withOpacity(0.1),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide.none,
@@ -22,175 +27,108 @@ class Contact extends StatelessWidget {
     );
   }
 
+  String? _validateRequired(String? value, String field) {
+    if (value == null || value.trim().isEmpty) {
+      return "⚠️ ${field}";
+    }
+    return null;
+  }
+
+  String? _validateEmail(BuildContext context, String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "⚠️ ${context.loc.enterEmail}";
+    }
+    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    if (!emailRegex.hasMatch(value)) {
+      return "⚠️ ${context.loc.invalidEmail}";
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isDesktop = MediaQuery.of(context).size.width > 700;
-
-    return Padding(
-      padding: const EdgeInsets.all(32.0),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 900),
+    return BlocConsumer<ContactCubit, ContactState>(
+      listener: (context, state) {
+        if (state is ContactSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("✅ ${context.loc.messageSent}")),
+          );
+          _nameController.clear();
+          _emailController.clear();
+          _subjectController.clear();
+          _messageController.clear();
+        } else if (state is ContactFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("❌ ${context.loc.messageFailed}: ${state.error}")),
+          );
+        }
+      },
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(32.0),
           child: Form(
+            key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      context.loc.contact,
-                      style: context.textStyles.titleMdMedium.copyWith(
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 4),
-                      height: 4,
-                      width: 60,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ],
+                // Name
+                TextFormField(
+                  controller: _nameController,
+                  decoration: _inputDecoration(context.loc.name),
+                  validator: (value) => _validateRequired(value, context.loc.enterName),
                 ),
-                const SizedBox(height: 30),
-
-                // Name + Email
-                isDesktop
-                    ? Row(
-                        children: [
-                          Expanded(
-                            child: TextField(
-                              decoration: _inputDecoration("Name", context),
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          Expanded(
-                            child: TextField(
-                              decoration: _inputDecoration(
-                                "Email Address",
-                                context,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    : Column(
-                        children: [
-                          TextField(
-                            decoration: _inputDecoration("Name", context),
-                          ),
-                          const SizedBox(height: 16),
-                          TextField(
-                            decoration: _inputDecoration(
-                              "Email Address",
-                              context,
-                            ),
-                          ),
-                        ],
-                      ),
                 const SizedBox(height: 16),
 
-                // I am + Subject
-                isDesktop
-                    ? Row(
-                        children: [
-                          Expanded(
-                            child: DropdownButtonFormField<String>(
-                              decoration: _inputDecoration("I am a", context),
-                              dropdownColor: Colors.grey[900],
-                              items:
-                                  <String>[
-                                    'Student',
-                                    'Professional',
-                                    'Other',
-                                  ].map((value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(
-                                        value,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  }).toList(),
-                              onChanged: (value) {},
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          Expanded(
-                            child: TextField(
-                              decoration: _inputDecoration("Subject", context),
-                            ),
-                          ),
-                        ],
-                      )
-                    : Column(
-                        children: [
-                          DropdownButtonFormField<String>(
-                            decoration: _inputDecoration("I am a", context),
-                            dropdownColor: Colors.grey[900],
-                            items: <String>['Student', 'Professional', 'Other']
-                                .map((value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  );
-                                })
-                                .toList(),
-                            onChanged: (value) {},
-                          ),
-                          const SizedBox(height: 16),
-                          TextField(
-                            decoration: _inputDecoration("Subject", context),
-                          ),
-                        ],
-                      ),
+                // Email
+                TextFormField(
+                  controller: _emailController,
+                  decoration: _inputDecoration(context.loc.email),
+                  validator: (value) => _validateEmail(context, value),
+                ),
+                const SizedBox(height: 16),
+
+                // Subject
+                TextFormField(
+                  controller: _subjectController,
+                  decoration: _inputDecoration(context.loc.subject),
+                  validator: (value) => _validateRequired(value, context.loc.enterSubject),
+                ),
                 const SizedBox(height: 16),
 
                 // Message
-                TextField(
-                  decoration: _inputDecoration("Message", context),
+                TextFormField(
+                  controller: _messageController,
                   maxLines: 5,
+                  decoration: _inputDecoration(context.loc.message),
+                  validator: (value) => _validateRequired(value, context.loc.enterMessage),
                 ),
-
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
 
                 // Submit Button
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 50,
-                        vertical: 16,
+                state is ContactLoading
+                    ? const CircularProgressIndicator()
+                    : Row(
+                        children: [
+                          PrimaryButton(
+                            onPressed: () {
+                              if (_formKey.currentState?.validate() ?? false) {
+                                final msg = ContactMessage(
+                                  name: _nameController.text,
+                                  email: _emailController.text,
+                                  subject: _subjectController.text,
+                                  message: _messageController.text,
+                                );
+                                context.read<ContactCubit>().sendMessage(msg);
+                              }
+                            },
+                            title: context.loc.submit,
+                          ),
+                        ],
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    child: const Text("Submit"),
-                  ),
-                ),
               ],
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

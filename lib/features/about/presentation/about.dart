@@ -1,10 +1,8 @@
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:portfolio/core/style/app_size.dart';
 import 'package:portfolio/core/style/app_colors.dart';
-import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/core/extension/extensions.dart';
 
 class AboutSection extends StatelessWidget {
@@ -67,13 +65,13 @@ class AboutSection extends StatelessWidget {
               ? Row(
                   children: [
                     Text(
-                      "I'm Ahmed Abdul Aziz and ",
+                      context.loc.aboot__,
                       style: context.textStyles.titleSmBold.copyWith(
                         fontWeight: FontWeight.w800,
                       ),
                     ),
                     Text(
-                      "Flutter Developer",
+                      context.loc.aboot___,
                       style: context.textStyles.titleSmBold.copyWith(
                         fontWeight: FontWeight.w800,
                         color: AppColors.primaryColor,
@@ -84,13 +82,13 @@ class AboutSection extends StatelessWidget {
               : Column(
                   children: [
                     Text(
-                      "I'm Ahmed Abdul Aziz and ",
+                      context.loc.aboot__,
                       style: context.textStyles.titleMdMedium.copyWith(
                         fontWeight: FontWeight.w800,
                       ),
                     ),
                     Text(
-                      "Flutter Developer",
+                      context.loc.aboot___,
                       style: context.textStyles.titleMdMedium.copyWith(
                         fontWeight: FontWeight.w800,
                         color: AppColors.primaryColor,
@@ -200,11 +198,6 @@ class ProfileInfo extends StatelessWidget {
                   children: [
                     buildInfoRow(
                       context,
-                      LucideIcons.cake,
-                      "Birthday: 17 October 2003",
-                    ),
-                    buildInfoRow(
-                      context,
                       LucideIcons.phone,
                       "Phone: +20 01278576046",
                     ),
@@ -222,7 +215,6 @@ class ProfileInfo extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    buildInfoRow(context, LucideIcons.user, "Age: 22"),
                     buildInfoRow(
                       context,
                       LucideIcons.mapPin,
@@ -236,6 +228,7 @@ class ProfileInfo extends StatelessWidget {
                   ],
                 ),
               ),
+              // Spacer
             ],
           )
         : Column(

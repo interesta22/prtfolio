@@ -222,4 +222,128 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mvvmsubtitle => 'استخدام نموذج MVVM لتقسيم واجهة المستخدم والمنطق';
+
+  @override
+  String get deadbot_short =>
+      'تطبيق ذكاء اصطناعي يرد على أسئلتك ويحللك مشاكل، مع رفع الصور مجاناً.';
+
+  @override
+  String get deadbot_long =>
+      'تطبيق ذكاء اصطناعي متقدم يستخدم نماذج لغة كبيرة (LLM) لتقديم إجابات دقيقة على أسئلتك وحلول لمشاكلك. يتميز التطبيق بواجهة مستخدم سهلة الاستخدام، دعم رفع الصور مجاناً، وتكامل مع خدمات سحابية لضمان أداء عالي وموثوقية.';
+
+  @override
+  String get k3_short => 'تطبيق لحساب أجر المواصلات وتقسيم المصاريف بدقة.';
+
+  @override
+  String get k3_long =>
+      'خليها علينا يساعدك على حساب أجرة المواصلات العامة بينك وبين أصدقائك، يسجل من دفع وكم دفع، ويحسب من له أو عليه فلوس. كما يقدم طرق التنقل بين الأماكن بكفاءة، لتنظيم المصاريف اليومية أو الرحلات الجماعية.0';
+
+  @override
+  String get tawseela_short =>
+      'خدمة مواصلات للطلاب المغتربين بأسعار مناسبة ومريحة.';
+
+  @override
+  String get tawseela_long =>
+      'توصيلة هو تطبيق لتسهيل حياة الطلاب المغتربين في مصر، يوفر رحلات مريحة وآمنة بين المدن والمحافظات بأسعار مناسبة، مع إمكانية متابعة موقع المركبة وحجز الرحلات بسهولة.';
+
+  @override
+  String get memomate_short =>
+      'تطبيق تدوين المذكرات الخاصة بشكل آمن وفعال أونلاين.';
+
+  @override
+  String get memomate_long =>
+      'تطبيق لتدوين المذكرات الشخصية أونلاين بطريقة آمنة ومرتبة. يمكنك كتابة يومياتك، تسجيل الأفكار، والاحتفاظ بالملاحظات المهمة مع إمكانية الوصول إليها في أي وقت ومن أي جهاز.';
+
+  @override
+  String get aboot__ => 'أنا أحمد عبد العزيز و';
+
+  @override
+  String get aboot___ => 'مطور Flutter';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get luxor_university => 'جامعة الأقصر';
+
+  @override
+  String get faculty_computers_info => 'كلية الحاسبات والمعلومات';
+
+  @override
+  String get date_oct2022_jun2023 => 'أكتوبر 2022 - يونيو 2023';
+
+  @override
+  String get kfs_university => 'جامعة كفر الشيخ';
+
+  @override
+  String get cs_department => 'قسم علوم الحاسب';
+
+  @override
+  String get date_oct2023_present => 'أكتوبر 2023 - حتى الآن';
+
+  @override
+  String get iti => 'معهد تكنولوجيا المعلومات';
+
+  @override
+  String get summer_training_flutter => 'تدريب صيفي - مسار Flutter';
+
+  @override
+  String get tanta_branch => 'فرع طنطا';
+
+  @override
+  String get date_jul2025_aug2025 => 'يوليو 2025 - أغسطس 2025';
+
+  @override
+  String get depi => 'مبادرة رواد مصر الرقمية';
+
+  @override
+  String get flutter_track => 'مسار Flutter';
+
+  @override
+  String get alexandria => 'الإسكندرية';
+
+  @override
+  String get date_jul2025_present => 'يوليو 2025 - حتى الآن';
+
+  @override
+  String get view_my_cv => 'رؤية السيرة الذاتية';
+
+  @override
+  String get name => 'الاسم';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get subject => 'الموضوع';
+
+  @override
+  String get message => 'الرسالة';
+
+  @override
+  String get submit => 'إرسال';
+
+  @override
+  String get enterName => 'أدخل اسمك';
+
+  @override
+  String get enterEmail => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get invalidEmail => 'البريد الإلكتروني غير صالح';
+
+  @override
+  String get enterSubject => 'أدخل الموضوع';
+
+  @override
+  String get enterMessage => 'أدخل رسالتك';
+
+  @override
+  String get messageSent => 'تم إرسال رسالتك بنجاح';
+
+  @override
+  String get messageFailed => 'فشل في إرسال الرسالة';
+
+  @override
+  String get view => 'عرض';
 }

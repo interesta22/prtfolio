@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/style/app_size.dart';
 import 'package:portfolio/core/style/app_colors.dart';
 
 class AppTheme {
@@ -7,11 +6,9 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.darkBackgroundColor,
     colorScheme: ColorScheme.dark(
       primary: AppColors.primaryColor,
-      background: AppColors.darkBackgroundColor,
       surface: AppColors.gray[850]!, // أغمق سنة من 800
       outline: AppColors.gray[700]!,
-      outlineVariant: AppColors.gray[600]!,
-      onBackground: AppColors.gray[100], // النص الفاتح
+      outlineVariant: AppColors.gray[600]!, // النص الفاتح
       onSurface: AppColors.gray[300]!, // النص الثانوي
       onSurfaceVariant: AppColors.gray[400]!,
       tertiary: AppColors.gray[900]!,
@@ -24,12 +21,10 @@ class AppTheme {
 
   ThemeData get lightTheme => _getThemeData(
     colorScheme: ColorScheme.light(
-      primary: AppColors.primaryColor,
-      background: AppColors.gray[50]!, // أفتح
+      primary: AppColors.primaryColor, // أفتح
       surface: AppColors.gray[100]!, // card خفيفة
       outline: AppColors.gray[300]!,
-      outlineVariant: AppColors.gray[400]!,
-      onBackground: AppColors.gray[900], // النص الأساسي
+      outlineVariant: AppColors.gray[400]!, // النص الأساسي
       onSurface: AppColors.gray[700]!, // النص الثانوي
       onSurfaceVariant: AppColors.gray[600]!,
       tertiary: AppColors.gray[800]!,
@@ -61,7 +56,7 @@ class AppTheme {
           if (states.contains(WidgetState.selected)) {
             return colorScheme.primary.withOpacity(0.5);
           }
-          return colorScheme.surfaceVariant;
+          return colorScheme.surfaceContainerHighest;
         }),
       ),
     );

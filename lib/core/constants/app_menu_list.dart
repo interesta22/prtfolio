@@ -10,16 +10,14 @@ class AppMenu {
 }
 
 class AppMenuList {
-
   static List<AppMenu> getItems(BuildContext context) {
     return [
-      AppMenu(title: context.loc.about, route: Routes.about),
-      AppMenu(title: context.loc.education, route: Routes.education),
-      AppMenu(title: context.loc.skills, route: Routes.skills),
-      AppMenu(title: context.loc.work, route: Routes.work),
-      AppMenu(title: context.loc.services, route: Routes.services),
-      AppMenu(title: context.loc.projects, route: Routes.projects),
-      AppMenu(title: context.loc.contact, route: Routes.contact),
+      AppMenu(title: context.loc.home, route: 'home'),
+      AppMenu(title: context.loc.about, route: 'about'),
+      AppMenu(title: context.loc.education, route: 'education'),
+      AppMenu(title: context.loc.skills, route: 'skills'),
+      AppMenu(title: context.loc.projects, route: 'projects'),
+      AppMenu(title: context.loc.contact, route: 'contact'),
     ];
   }
 }

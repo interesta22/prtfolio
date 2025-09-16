@@ -1,8 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/core/style/app_size.dart';
 import 'package:portfolio/core/style/app_colors.dart';
@@ -11,11 +8,10 @@ import 'package:portfolio/core/style/app_text_styles.dart';
 import 'package:portfolio/core/constants/app_menu_list.dart';
 import 'package:portfolio/features/home/presentation/cubit/theme_cubit.dart';
 import 'package:portfolio/features/home/presentation/cubit/locale_cubit.dart';
-import 'package:portfolio/features/home/presentation/widgets/blur_background.dart';
-import 'package:portfolio/features/home/presentation/widgets/app_bar_drawer_icon.dart';
 
 class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({super.key});
+  final void Function(String section) onItemSelected;
+  const CustomAppBar({super.key, required this.onItemSelected});
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -27,7 +23,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8), // ✅ يخلي الزوايا ناعمة
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10), // ✅ Blur effect
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20), // ✅ Blur effect
         child: Container(
           height: context.insets.appBarHeight,
           decoration: BoxDecoration(
@@ -46,19 +42,21 @@ class _CustomAppBarState extends State<CustomAppBar> {
               constraints: BoxConstraints(maxWidth: Insets.maxWidth),
               child: Row(
                 children: [
-                  AppLogo(),
+                  const AppLogo(),
                   if (context.isDesktop)
-                    Expanded(child: LargeMenu())
+                    Expanded(
+                      child: LargeMenu(onItemSelected: widget.onItemSelected),
+                    )
                   else
-                    Spacer(),
+                    const Spacer(),
                   LanguageToggle(
                     onLangSelected: (lang) {
                       context.read<LocaleCubit>().changeLanguage(lang);
                     },
                   ),
-                  ThemeToggle(),
+                  const ThemeToggle(),
                   if (context.isMobile || context.isTablet) ...[
-                    AppBarDrawerIcon(),
+                    AppBarDrawerIcon(onItemSelected: widget.onItemSelected),
                   ],
                 ],
               ),
@@ -76,27 +74,52 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 40,
       child: Image.asset("assets/images/gradient-az-za-logo-template.png"),
     );
   }
 }
 
 class LargeMenu extends StatelessWidget {
-  const LargeMenu({super.key});
+  final void Function(String section) onItemSelected;
+  const LargeMenu({super.key, required this.onItemSelected});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: AppMenuList.getItems(context).map((item) {
-        return LargeAppBarMenuItem(
-          text: item.title,
-          onPressed: () {
-            Navigator.pushNamed(context, item.route);
-          },
-          isSelected: ModalRoute.of(context)?.settings.name == item.route,
-        );
-      }).toList(),
+      children: [
+        LargeAppBarMenuItem(
+          text: context.loc.home,
+          onPressed: () => onItemSelected("home"),
+          isSelected: false,
+        ),
+        LargeAppBarMenuItem(
+          text: context.loc.about,
+          onPressed: () => onItemSelected("about"),
+          isSelected: false,
+        ),
+        LargeAppBarMenuItem(
+          text: context.loc.education,
+          onPressed: () => onItemSelected("education"),
+          isSelected: false,
+        ),
+        LargeAppBarMenuItem(
+          text: context.loc.skills,
+          onPressed: () => onItemSelected("skills"),
+          isSelected: false,
+        ),
+        LargeAppBarMenuItem(
+          text: context.loc.projects,
+          onPressed: () => onItemSelected("projects"),
+          isSelected: false,
+        ),
+        LargeAppBarMenuItem(
+          text: context.loc.contact,
+          onPressed: () => onItemSelected("contact"),
+          isSelected: false,
+        ),
+      ],
     );
   }
 }
@@ -122,7 +145,14 @@ class LargeAppBarMenuItem extends StatelessWidget {
           horizontal: Insets.med,
           vertical: Insets.xs,
         ),
-        child: Text(text, style: SmallTextStyle().bodyLgMedium),
+        child: Text(
+          text,
+          style: SmallTextStyle().bodyLgMedium.copyWith(
+            color: isSelected
+                ? AppColors.primaryColor
+                : context.colorScheme.onSurface,
+          ),
+        ),
       ),
     );
   }
@@ -140,23 +170,14 @@ class _LanguageToggleState extends State<LanguageToggle> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // ✅ بعد أي rebuild (زي لما تكبر/تصغر الشاشة) نقفل أي popup
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return; // widget اتشال خلاص
-      // اقفل أي popup مفتوح بأمان
-      OverlayState? overlay = Overlay.of(context, rootOverlay: true);
-      overlay?.context.findRenderObject(); // مجرد touch عشان يضمن إنه valid
-      Navigator.of(
-        context,
-        rootNavigator: true,
-      ).popUntil((route) => route.isFirst);
-    });
+    // Removed auto-pop logic to avoid unintended navigation on resize.
   }
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      icon: const Icon(Icons.language, size: 24),
+      iconSize: context.isMobile ? 15 : 18,
+      icon: Icon(Icons.language, size: context.isMobile ? 15 : 18),
       itemBuilder: (context) {
         return const [
           PopupMenuItem(
@@ -194,13 +215,13 @@ class ThemeToggle extends StatelessWidget {
     final isDark = context.watch<ThemeCubit>().state;
 
     return Transform.scale(
-      scale: 0.8,
+      scale: context.isMobile ? 0.5 : 0.6,
       child: Switch(
         value: isDark,
         onChanged: (value) {
           context.read<ThemeCubit>().toggleTheme();
         },
-        thumbIcon: MaterialStateProperty.resolveWith<Icon?>((states) {
+        thumbIcon: WidgetStateProperty.resolveWith<Icon?>((states) {
           if (isDark) {
             return const Icon(Icons.nightlight_round, color: Colors.white);
           } else {
@@ -210,14 +231,113 @@ class ThemeToggle extends StatelessWidget {
             );
           }
         }),
-        activeColor: AppColors.primaryColor, // لون أساسي عند الدارك
-        inactiveThumbColor: Colors.white, // لون الشمس
-        inactiveTrackColor: Colors.white.withOpacity(
-          0.5,
-        ), // خلفية فاتحة للـ Light
-        activeTrackColor: AppColors.primaryColor.withOpacity(
-          0.5,
-        ), // خلفية غامقة للـ Dark
+        activeColor: AppColors.primaryColor,
+        inactiveThumbColor: Colors.white,
+        inactiveTrackColor: Colors.white.withOpacity(0.5),
+        activeTrackColor: AppColors.primaryColor.withOpacity(0.5),
+      ),
+    );
+  }
+}
+
+class AppBarDrawerIcon extends StatefulWidget {
+  const AppBarDrawerIcon({super.key, required this.onItemSelected});
+  final void Function(String section) onItemSelected;
+
+  @override
+  State<AppBarDrawerIcon> createState() => _AppBarDrawerIconState();
+}
+
+class _AppBarDrawerIconState extends State<AppBarDrawerIcon>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+  OverlayEntry? _overlayEntry;
+
+  bool isOpen = false;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 200),
+    );
+    animation = Tween<double>(begin: 0.0, end: 1.0).animate(controller);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    _removeOverlay();
+    super.dispose();
+  }
+
+  void _toggleMenu(BuildContext context) {
+    if (isOpen) {
+      controller.reverse();
+      _removeOverlay();
+    } else {
+      controller.forward();
+      _showOverlay(context);
+    }
+    setState(() => isOpen = !isOpen);
+  }
+
+  void _showOverlay(BuildContext context) {
+    final renderBox = context.findRenderObject() as RenderBox;
+    final offset = renderBox.localToGlobal(Offset.zero);
+
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: offset.dy + renderBox.size.height,
+        right: 16,
+        child: Material(
+          elevation: 6,
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            width: 200, // ✅ لازم نديها عرض محدد
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: AppMenuList.getItems(context).map((item) {
+                return InkWell(
+                  onTap: () {
+                    widget.onItemSelected(item.route); // ✅ ابعت السكشن
+                    _toggleMenu(context); // ✅ يقفل المينو بعد الاختيار
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    child: Text(item.title),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    Overlay.of(context).insert(_overlayEntry!);
+  }
+
+  void _removeOverlay() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () => _toggleMenu(context),
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_close,
+        progress: controller,
+        size: context.isMobile ? 15 : 18,
       ),
     );
   }

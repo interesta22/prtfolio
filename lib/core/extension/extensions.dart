@@ -49,65 +49,121 @@ extension StyleContext on BuildContext {
   }
 
   AppLocalizations get loc => AppLocalizations.of(this) ?? AppLocalizationsEn();
-  
+
   ColorScheme get colorScheme => theme.colorScheme;
+}
+
+extension LocaleExtension on BuildContext {
+  bool get isArabic => Localizations.localeOf(this).languageCode == "ar";
+  bool get isEnglish => Localizations.localeOf(this).languageCode == "en";
+  String get currentLanguage => Localizations.localeOf(this).languageCode;
 }
 
 extension LocMap on AppLocalizations {
   String getByKey(String key) {
     switch (key) {
-      case "teamwork": return teamwork;
-      case "teamworksubtitle": return teamworksubtitle;
-      case "communication": return communication;
-      case "communicationsubtitle": return communicationsubtitle;
-      case "presentation": return presentation;
-      case "presentationsubtitle": return presentationsubtitle;
-      case "time_management": return time_management;
-      case "time_managementsubtitle": return time_managementsubtitle;
-      case "remote_collaboration": return remote_collaboration;
-      case "remote_collaborationsubtitle": return remote_collaborationsubtitle;
-      case "adaptability": return adaptability;
-      case "adaptabilitysubtitle": return adaptabilitysubtitle;
-      case "team_leadership": return team_leadership;
-      case "team_leadershipsubtitle": return team_leadershipsubtitle;
-      case "problem_solving": return problem_solving;
-      case "problem_solvingsubtitle": return problem_solvingsubtitle;
-      case "critical_thinking": return critical_thinking;
-      case "critical_thinkingsubtitle": return critical_thinkingsubtitle;
-      case "self_learning": return self_learning;
-      case "self_learningsubtitle": return self_learningsubtitle;
-      case "dart": return dart;
-      case "dartsubtitle": return dartsubtitle;
-      case "flutter": return flutter;
-      case "fluttersubtitle": return fluttersubtitle;
-      case "firebase": return firebase;
-      case "firebasesubtitle": return firebasesubtitle;
-      case "cpp": return cpp;
-      case "cppsubtitle": return cppsubtitle;
-      case "csharp": return csharp;
-      case "csharpsubtitle": return csharpsubtitle;
-      case "python": return python;
-      case "pythonsubtitle": return pythonsubtitle;
-      case "oop": return oop;
-      case "oopsubtitle": return oopsubtitle;
-      case "data_structures": return data_structures;
-      case "data_structuressubtitle": return data_structuressubtitle;
-      case "algorithms": return algorithms;
-      case "algorithmssubtitle": return algorithmssubtitle;
-      case "solid_principles": return solid_principles;
-      case "solid_principlessubtitle": return solid_principlessubtitle;
-      case "design_patterns": return design_patterns;
-      case "design_patternssubtitle": return design_patternssubtitle;
-      case "cubit": return cubit;
-      case "cubitsubtitle": return cubitsubtitle;
-      case "bloc": return bloc;
-      case "blocsubtitle": return blocsubtitle;
-      case "clean_architecture": return clean_architecture;
-      case "clean_architecturesubtitle": return clean_architecturesubtitle;
-      case "mvvm": return mvvm;
-      case "mvvmsubtitle": return mvvmsubtitle;
-      default: return "";
+      case "teamwork":
+        return teamwork;
+      case "teamworksubtitle":
+        return teamworksubtitle;
+      case "communication":
+        return communication;
+      case "communicationsubtitle":
+        return communicationsubtitle;
+      case "presentation":
+        return presentation;
+      case "presentationsubtitle":
+        return presentationsubtitle;
+      case "time_management":
+        return time_management;
+      case "time_managementsubtitle":
+        return time_managementsubtitle;
+      case "remote_collaboration":
+        return remote_collaboration;
+      case "remote_collaborationsubtitle":
+        return remote_collaborationsubtitle;
+      case "adaptability":
+        return adaptability;
+      case "adaptabilitysubtitle":
+        return adaptabilitysubtitle;
+      case "team_leadership":
+        return team_leadership;
+      case "team_leadershipsubtitle":
+        return team_leadershipsubtitle;
+      case "problem_solving":
+        return problem_solving;
+      case "problem_solvingsubtitle":
+        return problem_solvingsubtitle;
+      case "critical_thinking":
+        return critical_thinking;
+      case "critical_thinkingsubtitle":
+        return critical_thinkingsubtitle;
+      case "self_learning":
+        return self_learning;
+      case "self_learningsubtitle":
+        return self_learningsubtitle;
+      case "dart":
+        return dart;
+      case "dartsubtitle":
+        return dartsubtitle;
+      case "flutter":
+        return flutter;
+      case "fluttersubtitle":
+        return fluttersubtitle;
+      case "firebase":
+        return firebase;
+      case "firebasesubtitle":
+        return firebasesubtitle;
+      case "cpp":
+        return cpp;
+      case "cppsubtitle":
+        return cppsubtitle;
+      case "csharp":
+        return csharp;
+      case "csharpsubtitle":
+        return csharpsubtitle;
+      case "python":
+        return python;
+      case "pythonsubtitle":
+        return pythonsubtitle;
+      case "oop":
+        return oop;
+      case "oopsubtitle":
+        return oopsubtitle;
+      case "data_structures":
+        return data_structures;
+      case "data_structuressubtitle":
+        return data_structuressubtitle;
+      case "algorithms":
+        return algorithms;
+      case "algorithmssubtitle":
+        return algorithmssubtitle;
+      case "solid_principles":
+        return solid_principles;
+      case "solid_principlessubtitle":
+        return solid_principlessubtitle;
+      case "design_patterns":
+        return design_patterns;
+      case "design_patternssubtitle":
+        return design_patternssubtitle;
+      case "cubit":
+        return cubit;
+      case "cubitsubtitle":
+        return cubitsubtitle;
+      case "bloc":
+        return bloc;
+      case "blocsubtitle":
+        return blocsubtitle;
+      case "clean_architecture":
+        return clean_architecture;
+      case "clean_architecturesubtitle":
+        return clean_architecturesubtitle;
+      case "mvvm":
+        return mvvm;
+      case "mvvmsubtitle":
+        return mvvmsubtitle;
+      default:
+        return "";
     }
   }
 }
-
