@@ -82,16 +82,6 @@ class ProjectsListPage extends StatelessWidget {
         liveDemoLink: 'https://example.com',
         downloadLink: 'https://playstore.com/app',
       ),
-      Project(
-        name: 'MemoMate',
-        shortDescription: context.loc.memomate_short,
-        longDescription: context.loc.memomate_long,
-        coverImage: 'assets/images/memo_mate_icon.png',
-        techStack: ['Flutter', 'Firebase'],
-        galleryImages: ['assets/images/photo_2025-07-05_19-22-22.jpg'],
-        liveDemoLink: 'https://example.com',
-        downloadLink: 'https://playstore.com/app',
-      ),
     ];
     return SizedBox(
       width: double.infinity,

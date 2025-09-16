@@ -8,26 +8,24 @@ class HeroTexts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = context.isDesktopOrTablet;
+
     return Column(
-      crossAxisAlignment: context.isDesktopOrTablet
+      crossAxisAlignment: isDesktop
           ? CrossAxisAlignment.start
-          : CrossAxisAlignment.start,
+          : CrossAxisAlignment.center,
       children: [
         Text(
           context.loc.heroTitle,
-          textAlign: context.isDesktopOrTablet
-              ? TextAlign.left
-              : TextAlign.center,
+          textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: context.textStyles.titleLgBold.copyWith(
             color: context.colorScheme.onSurface,
           ),
         ),
-        Gap(context.isDesktopOrTablet ? Insets.med : Insets.xs),
+        Gap(isDesktop ? Insets.med : Insets.xs),
         Text(
           context.loc.mobileAppDeveloper,
-          textAlign: context.isDesktopOrTablet
-              ? TextAlign.left
-              : TextAlign.center,
+          textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: context.textStyles.titleMdMedium.copyWith(
             color: context.colorScheme.onSurface,
           ),
@@ -35,6 +33,7 @@ class HeroTexts extends StatelessWidget {
         Gap(Insets.med),
         Text(
           context.loc.heroDescription,
+          textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: context.textStyles.bodyLgMedium.copyWith(
             color: context.colorScheme.onSurface,
             height: 1.5,
