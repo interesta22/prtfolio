@@ -74,7 +74,7 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 70,
       child: Image.asset("assets/images/gradient-az-za-logo-template.png"),
     );
   }
@@ -176,8 +176,8 @@ class _LanguageToggleState extends State<LanguageToggle> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      iconSize: context.isMobile ? 15 : 18,
-      icon: Icon(Icons.language, size: context.isMobile ? 15 : 18),
+      iconSize: context.isMobile ? 20 : 25,
+      icon: Icon(Icons.language, size: context.isMobile ? 20 : 25),
       itemBuilder: (context) {
         return const [
           PopupMenuItem(
@@ -215,7 +215,7 @@ class ThemeToggle extends StatelessWidget {
     final isDark = context.watch<ThemeCubit>().state;
 
     return Transform.scale(
-      scale: context.isMobile ? 0.5 : 0.6,
+      scale: context.isMobile ? 0.7 : 0.8,
       child: Switch(
         value: isDark,
         onChanged: (value) {
@@ -337,7 +337,7 @@ class _AppBarDrawerIconState extends State<AppBarDrawerIcon>
       icon: AnimatedIcon(
         icon: AnimatedIcons.menu_close,
         progress: controller,
-        size: context.isMobile ? 15 : 18,
+        size: context.isMobile ? 20 : 25,
       ),
     );
   }

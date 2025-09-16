@@ -69,11 +69,13 @@ class _HomePageState extends State<HomePage> {
           BackgroundBlur(),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 50),
+              padding: context.isDesktopOrTablet
+                  ? EdgeInsets.symmetric(horizontal: 80, vertical: 50)
+                  : EdgeInsets.symmetric(horizontal: 10, vertical: 25),
               child: Column(
                 children: [
                   Container(key: heroKey, child: HeroWidget()),
-                  Gap(Insets.xxxl),
+                  Gap(Insets.xl),
                   Container(key: aboutKey, child: AboutSection()),
                   Gap(Insets.xxxl),
                   Container(key: educationKey, child: EducationTimeline()),

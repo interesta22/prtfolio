@@ -42,20 +42,24 @@ class AboutSection extends StatelessWidget {
         children: [
           Column(
             children: [
-              Text(
-                context.loc.aboutTitle,
-                style: context.textStyles.titleMdMedium.copyWith(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w900,
+              Center(
+                child: Text(
+                  context.loc.aboutTitle,
+                  style: context.textStyles.titleMdMedium.copyWith(
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 4),
-                height: 4,
-                width: 60,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(2),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.only(top: 4),
+                  height: 4,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
                 ),
               ),
             ],
@@ -79,22 +83,25 @@ class AboutSection extends StatelessWidget {
                     ),
                   ],
                 )
-              : Column(
-                  children: [
-                    Text(
-                      context.loc.aboot__,
-                      style: context.textStyles.titleMdMedium.copyWith(
-                        fontWeight: FontWeight.w800,
+              : Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        context.loc.aboot__,
+                        style: context.textStyles.titleMdMedium.copyWith(
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
-                    ),
-                    Text(
-                      context.loc.aboot___,
-                      style: context.textStyles.titleMdMedium.copyWith(
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.primaryColor,
+                      Text(
+                        context.loc.aboot___,
+                        style: context.textStyles.titleMdMedium.copyWith(
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.primaryColor,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
           Gap(Insets.xs),
           _buildRichText(context.loc.aboutParagraph, highlights, context),
@@ -235,11 +242,6 @@ class ProfileInfo extends StatelessWidget {
             children: [
               buildInfoRow(
                 context,
-                LucideIcons.cake,
-                "Birthday: 17 October 2003",
-              ),
-              buildInfoRow(
-                context,
                 LucideIcons.phone,
                 "Phone: +20 01278576046",
               ),
@@ -248,7 +250,6 @@ class ProfileInfo extends StatelessWidget {
                 LucideIcons.mail,
                 "Email: ahmedabdulazizz203@gmail.com",
               ),
-              buildInfoRow(context, LucideIcons.user, "Age: 22"),
               buildInfoRow(context, LucideIcons.mapPin, "City: Alexandria"),
               buildInfoRow(
                 context,

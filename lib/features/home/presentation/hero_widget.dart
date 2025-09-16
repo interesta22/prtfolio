@@ -56,9 +56,31 @@ class _SmallHeroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: context.height * 0.5, child: HeroImage()),
-        Gap(Insets.xl),
-        HeroTexts(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: SizedBox(width: context.width * 0.6, child: HeroImage()),
+            ),
+            Gap(Insets.xl),
+            Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HeroTexts(),
+                  Gap(Insets.xl),
+                  DownloadCVButton(
+                    cvUrl:
+                        'https://drive.google.com/file/d/1PqG277to1259scPwA7UsQ5q-iS7a_A79/view?usp=sharing',
+                    title: context.loc.view_my_cv,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }

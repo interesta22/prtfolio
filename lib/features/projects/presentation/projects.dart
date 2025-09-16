@@ -118,7 +118,7 @@ class ProjectsListPage extends StatelessWidget {
               ),
             ],
           ),
-          Gap(Insets.xs),
+          Gap(Insets.xl),
           ProjectsSwiper(projects: projects),
         ],
       ),

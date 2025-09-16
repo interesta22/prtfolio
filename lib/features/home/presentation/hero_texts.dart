@@ -11,7 +11,7 @@ class HeroTexts extends StatelessWidget {
     return Column(
       crossAxisAlignment: context.isDesktopOrTablet
           ? CrossAxisAlignment.start
-          : CrossAxisAlignment.center,
+          : CrossAxisAlignment.start,
       children: [
         Text(
           context.loc.heroTitle,
@@ -22,7 +22,7 @@ class HeroTexts extends StatelessWidget {
             color: context.colorScheme.onSurface,
           ),
         ),
-        Gap(Insets.med),
+        Gap(context.isDesktopOrTablet ? Insets.med : Insets.xs),
         Text(
           context.loc.mobileAppDeveloper,
           textAlign: context.isDesktopOrTablet

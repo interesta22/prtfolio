@@ -140,7 +140,7 @@ class EducationTimeline extends StatelessWidget {
 
                 // الـ items
                 ListView(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   children: [
                     buildTimelineItem(
                       context: context,

@@ -19,7 +19,7 @@ class SmallTextStyle implements AppTextStyles {
 
   @override
   TextStyle get titleMdMedium => const TextStyle(
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: FontWeight.w500,
     fontFamily: 'NotoSans',
   );
